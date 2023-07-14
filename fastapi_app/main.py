@@ -1,3 +1,5 @@
+import datetime
+
 import uvicorn
 from fastapi import FastAPI
 
@@ -6,7 +8,10 @@ app = FastAPI()
 
 @app.get("/")
 def read_root():
-    return {"app": "fastapi"}
+    return {
+        "app": "fastapi",
+        "datetime": datetime.datetime.now().strftime("%Y-%m-%d %I:%M:%S %p"),
+    }
 
 
 if __name__ == "__main__":
