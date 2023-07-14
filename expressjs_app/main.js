@@ -12,9 +12,8 @@ app.get("/", (_req, res) => {
   const hours = String(currentDate.getHours()).padStart(2, "0");
   const minutes = String(currentDate.getMinutes()).padStart(2, "0");
   const seconds = String(currentDate.getSeconds()).padStart(2, "0");
-  const ampm = (hours >= 12 ? "pm" : "am").toUpperCase();
 
-  const formattedDate = `${year}-${month}-${day} ${hours}:${minutes}:${seconds} ${ampm}`;
+  const formattedDate = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
 
   res.json({
     app: "expressjs",
