@@ -1,0 +1,33 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: k8s-app-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+spec:
+  rules:
+    - http:
+        paths:
+        - path: /expressjs(/|$)(.*)
+          pathType: Prefix
+          backend:
+            service:
+              name: expressjs-app
+              port:
+                number: 8000
+
+        - path: /fastapi(/|$)(.*)
+          pathType: Prefix
+          backend:
+            service:
+              name: fastapi-app
+              port:
+                number: 8000
+
+        - path: /gofiber(/|$)(.*)
+          pathType: Prefix
+          backend:
+            service:
+              name: gofiber-app
+              port:
+                number: 8000
